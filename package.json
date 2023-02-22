@@ -1,0 +1,23 @@
+{
+  "name": "esy-state",
+  "version": "1.0.0",
+  "description": "Make your DOM react to state changes",
+  "main": "src/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "examples": "npx http-server ./ -p 8080"
+  },
+  "exports": {
+    ".": {
+      "import": {
+        "default": "./src/index.mjs"
+      }
+    }
+  },
+  "files": [
+    "src/**/*"
+ ],
+  "author": "Daniel Hodvogner <dhodvogner@gmail.com>",
+  "license": "GNU GPLv3"
+}

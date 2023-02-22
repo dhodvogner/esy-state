@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esy-State Examples</title>
+  <script type="module" src="../src/index.mjs"></script>
+</head>
+<body>
+  <h3>Repeater with Array of Objects</h3>
+  <ul>
+    <li %people>
+      <div>Index: {{__index}}</div>
+      <div>Name: {{name}}</div>
+      <div>Age: {{age}}</div>
+    </li>
+  </ul>
+
+
+  <input type="text" id="name" placeholder="Name">
+  <input type="number" id="age" placeholder="Age">
+  <button @click="add">Add</button>
+  <button @click="remove">Remove</button>
+
+  <script type="module">
+    import { state, mutations } from '../src/index.mjs'
+
+    state["people"] = [
+      { name: "John", age: 20 },
+      { name: "Jane", age: 21 },
+      { name: "Jack", age: 22 },
+      { name: "Jill", age: 23 },
+      { name: "Joe",  age: 24 },
+    ];
+
+    mutations.add = () => {
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+
+      const people = state["people"];
+      people.push({ name,  age });  
+      state["people"] = people;
+    }
+
+    mutations.remove = () => {
+      const people = state["people"];
+      people.pop();
+      state["people"] = people;
+    }
+  </script>
+</body>
+</html>
