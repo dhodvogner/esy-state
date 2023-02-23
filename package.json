@@ -1,12 +1,13 @@
 {
   "name": "esy-state",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Make your DOM react to state changes",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "examples": "npx http-server ./ -p 8080"
+    "examples": "npx http-server ./ -p 8080",
+    "pack": "npm pack --pack-destination ./dist"
   },
   "exports": {
     ".": {
