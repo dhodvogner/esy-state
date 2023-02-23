@@ -1,6 +1,8 @@
 # Esy-State
-Make your DOM react to state changes.
+Make your DOM react to changes.
+
 No heavy frameworks, no aditional dependencies, no building, no transpilation.
+
 
 ## 👋 Getting Started
 
@@ -19,7 +21,7 @@ $ npm i esy-state
 
 ## 🧩 Features
 
-### Binding state data for a DOM element
+### Simple data binding
 ```html
 <h1 #hello-world></h1>
 <script type="module">
@@ -28,7 +30,53 @@ $ npm i esy-state
 </script>
 ```
 
-### Repeater for Arrays and Objects
+### TODO: Data binding with "Mustache" syntax
+```html
+<h1 #world>Hello {{world]]!</h1>
+<script type="module">
+  import { state } from 'esy-state';
+  state["world"] = 'World';
+</script>
+```
+
+### Data binding (arbitrary HTML)
+
+⚠️ Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to XSS vulnerabilities. Only use this method on trusted content and never on user-provided content.
+
+```html
+<div +hello-world></div>
+<script type="module">
+  import { state } from 'esy-state';
+  state["hello-world"] = '<h1>Hello World!</h1>';
+</script>
+```
+
+### TODO: Attribu†e binding
+```html
+<h1 #foo></h1>
+<input type="text" :value="foo" @change="onInputChange" id="input">
+<script type="module">
+  import { state, mutations } from 'esy-state';
+  state["foo"] = 'bar!';
+  mutations.onInputChange = () => {
+    const name = document.getElementById("input").value;
+    state["foo"] = bar;
+    console.log(state);
+  };
+</script>
+```
+
+### TODO: Conditional rendering
+```html
+<div ?foo>I'm visible!<div>
+<div ?!foo>I'm not visible</div>
+<script type="module">
+  import { state } from 'esy-state';
+  state["foo"] = true;
+</script>
+```
+
+### List rendering
 ```html
 <div %arr></div>
 
@@ -45,7 +93,7 @@ $ npm i esy-state
 </script>
 ```
 
-### Mutations to manipulate the state
+### Muanipulate the state (mutations)
 ```html
 Hello <div #name>Noname</div>!
 <input type="text" id="name" placeholder="Enter your name..">
@@ -62,7 +110,7 @@ Hello <div #name>Noname</div>!
 
 ## 🚀 Roadmap
 
-- Better mustache like templating concept: ```<div #>{{ foo }} Bar</div>```
+- Known issue: Neasted list rendering is not possible yet.
 - Fix dodgey subscription handling
 - Figure out CDN hosting
 - Figure out building npm package

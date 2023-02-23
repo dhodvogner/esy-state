@@ -1,3 +1,5 @@
+import { renderMustache } from "./utils.mjs";
+
 export const createState = (subscriptions, repeaters) => {
   return new Proxy({}, {
     get: (state, prop) => {
@@ -12,11 +14,15 @@ export const createState = (subscriptions, repeaters) => {
 };
 
 export const notify = (stateKey, state, subscriptions, origin) => {
-  console.log(`${origin} ===> notify`, stateKey, state[stateKey]);
+  console.log(`📢 ${origin} ==> notify`, stateKey, state[stateKey]);
 
   if (subscriptions[stateKey])
     subscriptions[stateKey].forEach((subscription) => {
       if (subscription.type === "content") {
+        subscription.element.innerText = state[stateKey];
+      }
+
+      if (subscription.type === "content-html") {
         subscription.element.innerHTML = state[stateKey];
       }
 
@@ -26,18 +32,11 @@ export const notify = (stateKey, state, subscriptions, origin) => {
         state[stateKey].forEach((item, index) => {
           const newNode = templateNode.cloneNode(true);
           if (typeof item !== 'object' || Array.isArray(item)) {
-            newNode.innerHTML = item;
+            newNode.innerText = item;
             parentNode.appendChild(newNode);
           } else {
-            const matches = newNode.innerHTML.match(/{{\s*[\w\.]+\s*}}/g).map((x) => x.match(/[\w\.]+/)[0]);
-            matches.forEach((match) => {  
-              const value = (match === "__index") ? index : item[match];
-              if(value === undefined) value = "";
-              newNode.innerHTML = newNode.innerHTML.replace(`{{${match}}}`, value);
-            });
-            if(matches.length === 0) {
-              newNode.innerHTML = item;
-            }
+            item["__index"] = index;
+            newNode.innerHTML = renderMustache(newNode.innerHTML, item);
             parentNode.appendChild(newNode);
           }
         });
