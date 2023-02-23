@@ -17,7 +17,8 @@
     }
   },
   "files": [
-    "src/**/*"
+    "src/**/*",
+    "index.mjs"
  ],
   "author": "Daniel Hodvogner <dhodvogner@gmail.com>",
   "license": "GNU GPLv3"

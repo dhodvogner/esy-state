@@ -1,0 +1,1 @@
+export { state, mutations } from './src/index.mjs';

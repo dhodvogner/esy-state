@@ -9,13 +9,17 @@ No heavy frameworks, no aditional dependencies, no building, no transpilation.
 
 ```shell
 $ npm i esy-state
-// Or import it via CDN
+```
+
+```javascript
+// Serving it with Express
+app.use('/esy-state',  express.static('node_modules/@esyfyi/esy-state', { index: ["index.mjs"] }));
 ```
 
 ```html
 <h1 #hello-world></h1>
 <script type="module">
-  import { state } from 'esy-state';
+  import { state } from './esy-state';
   state["hello-world"] = 'Hello World!';
 </script>
 ```
@@ -26,7 +30,7 @@ $ npm i esy-state
 ```html
 <h1 #hello-world></h1>
 <script type="module">
-  import { state } from 'esy-state';
+  import { state } from './esy-state';
   state["hello-world"] = 'Hello World!';
 </script>
 ```
@@ -35,7 +39,7 @@ $ npm i esy-state
 ```html
 <h1 #world>Hello {{world]]!</h1>
 <script type="module">
-  import { state } from 'esy-state';
+  import { state } from './esy-state';
   state["world"] = 'World';
 </script>
 ```
@@ -47,7 +51,7 @@ $ npm i esy-state
 ```html
 <div +hello-world></div>
 <script type="module">
-  import { state } from 'esy-state';
+  import { state } from './esy-state';
   state["hello-world"] = '<h1>Hello World!</h1>';
 </script>
 ```
@@ -57,7 +61,7 @@ $ npm i esy-state
 <h1 #foo></h1>
 <input type="text" :value="foo" @change="onInputChange" id="input">
 <script type="module">
-  import { state, mutations } from 'esy-state';
+  import { state, mutations } from './esy-state';
   state["foo"] = 'bar!';
   mutations.onInputChange = () => {
     const name = document.getElementById("input").value;
@@ -72,7 +76,7 @@ $ npm i esy-state
 <div ?foo>I'm visible!<div>
 <div ?!foo>I'm not visible</div>
 <script type="module">
-  import { state } from 'esy-state';
+  import { state } from './esy-state';
   state["foo"] = true;
 </script>
 ```
@@ -88,7 +92,7 @@ $ npm i esy-state
 </li>
 
 <script type="module">
-  import { state } from 'esy-state';
+  import { state } from './esy-state';
   state["arr"] = [1, 2, 3, 4, 5];
   state["people"] = [{ name: "John", age: 20 }, { name: "Jane", age: 21 }];
 </script>
@@ -101,7 +105,7 @@ Hello <div #name>Noname</div>!
 <button @click="setName">Add</button>
 
 <script type="module">
-  import { state, mutations } from 'esy-state';
+  import { state, mutations } from './esy-state';
   mutations.setName = () => {
     const name = document.getElementById("name").value;
     state["name"] = name;
