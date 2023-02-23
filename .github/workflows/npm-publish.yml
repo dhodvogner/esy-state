@@ -37,6 +37,8 @@ jobs:
           format: "${major}.${minor}.${patch}"
           bump_each_commit: true
       - run: npm ci
+      - run: git config --global user.email ${{secrets.GIT_EMAIL}}
+      - run: git config --global user.name ${{secrets.GIT_NAME}}
       - run: npm version ${{ steps.semantic_version.outputs.version_tag }}
       - run: npm publish
         env:
