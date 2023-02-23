@@ -111,8 +111,10 @@ Hello <div #name>Noname</div>!
 ## 🚀 Roadmap
 
 - Known issue: Neasted list rendering is not possible yet.
-- Fix dodgey subscription handling
-- Figure out CDN hosting
-- Figure out building npm package
-- Better documentation
-- Release the first version
+- Improvment needed on: Mustache template implementation.
+- Improvment needed on: Subscription handling.
+- Figure out: Best way to distribute? CDN? NPM package?
+- Figure out: Automatical testing? E2E?
+- Figure out: Create a build/release pipline for version control.
+- Better documentation.
+- Release the first version.
