@@ -1,5 +1,6 @@
 # Esy-State
-Make your DOM react to state changes
+Make your DOM react to state changes.
+No heavy frameworks, no aditional dependencies, no building, no transpilation.
 
 ## 👋 Getting Started
 
