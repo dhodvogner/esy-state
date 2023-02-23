@@ -1,6 +1,6 @@
 {
-  "name": "esy-state",
-  "version": "0.1.0",
+  "name": "@esyfyi/esy-state",
+  "version": "0.0.0",
   "description": "Make your DOM react to state changes",
   "main": "src/index.js",
   "type": "module",

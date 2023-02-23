@@ -3,6 +3,7 @@ Make your DOM react to changes.
 
 No heavy frameworks, no aditional dependencies, no building, no transpilation.
 
+[![Node.js Package CI](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml/badge.svg?branch=main)](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml)
 
 ## 👋 Getting Started
 
