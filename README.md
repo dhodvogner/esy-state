@@ -8,7 +8,7 @@ No heavy frameworks, no aditional dependencies, no building, no transpilation.
 ## 👋 Getting Started
 
 ```shell
-$ npm i esy-state
+$ npm i @esyfyi/esy-state
 ```
 
 ```javascript
