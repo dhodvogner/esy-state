@@ -5,7 +5,6 @@ No heavy frameworks, no aditional dependencies, no building, no transpilation.
 
 [![Node.js Package CI](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml/badge.svg?branch=main)](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml)
 
-
 ## 👋 Getting Started
 
 ```shell
@@ -53,7 +52,7 @@ $ npm i esy-state
 </script>
 ```
 
-### TODO: Attribu†e binding
+### TODO: Attribute binding
 ```html
 <h1 #foo></h1>
 <input type="text" :value="foo" @change="onInputChange" id="input">
@@ -112,6 +111,7 @@ Hello <div #name>Noname</div>!
 
 ## 🚀 Roadmap
 
+- Persits state via Web Storage API
 - Known issue: Neasted list rendering is not possible yet.
 - Improvment needed on: Mustache template implementation.
 - Improvment needed on: Subscription handling.
