@@ -13,3 +13,15 @@ export const collectNodes = (operator) => {
   };
   return nodes;
 }
+
+//TODO: This is a very naive implementation of mustache templating
+export const renderMustache = (template, data) => {
+  const matches = template.match(/{{\s*[\w\.]+\s*}}/g).map((x) => x.match(/[\w\.]+/)[0]);
+  let result = template;
+  matches.forEach((match) => {
+    const value = data[match];
+    if (value === undefined) value = "";
+    result = result.replace(`{{${match}}}`, value);
+  });
+  return result;
+}

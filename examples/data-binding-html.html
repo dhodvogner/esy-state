@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esy-State Example: Data binding with HTML</title>
+</head>
+<body>
+  <h3>Data binding with HTML</h3>
+  <div +hello-world></div>
+
+  <input type="text" id="html" placeholder="<b>Foo</b>" value="Hello <b>World</b>!">
+  <button @click="update">Update</button>
+
+  <script type="module" src="../src/index.mjs"></script>
+  <script type="module">
+    import { state, mutations } from '../src/index.mjs'
+
+    state["hello-world"] = 'Hello <b>World</b>!';
+
+    mutations.update = () => {
+      const html = document.getElementById("html").value;
+      state["hello-world"] = html;
+    }
+  </script>
+</body>
+</html>

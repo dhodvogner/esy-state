@@ -6,10 +6,17 @@ export const state = createState(subscriptions);
 export const mutations = {};
 
 window.addEventListener("load", () => {
-  const nodesWithStateBindings = collectNodes("#");
-  nodesWithStateBindings.forEach((node) => {
+  const nodesWithDataBindings = collectNodes("#");
+  nodesWithDataBindings.forEach((node) => {
     const stateKey = node.attribute.name.split("#")[1];
     subscribe(stateKey, { type: "content", element: node.element });
+    notify(stateKey, state, subscriptions, "window.load");
+  });
+
+  const nodesWithHtmlBindings = collectNodes("+");
+  nodesWithHtmlBindings.forEach((node) => {
+    const stateKey = node.attribute.name.split("+")[1];
+    subscribe(stateKey, { type: "content-html", element: node.element });
     notify(stateKey, state, subscriptions, "window.load");
   });
 
