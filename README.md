@@ -1,7 +1,7 @@
 # Esy-State
 Make your DOM react to changes.
 
-No heavy frameworks, no aditional dependencies, no building, no transpilation.
+Low-code framework, no aditional dependencies (100% Vanilla JS), no building, no transpilation.
 
 [![Node.js Package CI](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml/badge.svg?branch=main)](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml)
 
@@ -12,7 +12,7 @@ $ npm i @esyfyi/esy-state
 ```
 
 ```javascript
-// Serving it with Express
+// Serv the module files staticly (With express for example) 
 app.use('/esy-state',  express.static('node_modules/@esyfyi/esy-state', { index: ["index.mjs"] }));
 ```
 
@@ -24,9 +24,14 @@ app.use('/esy-state',  express.static('node_modules/@esyfyi/esy-state', { index:
 </script>
 ```
 
+## 🤨 How it works?
+
+TODO: Explain how state and mutations are working
+TODO: Explain persistence and how to not persisit certain variables (__)
+
 ## 🧩 Features
 
-### Simple data binding
+### Simple one-way data binding
 ```html
 <h1 #hello-world></h1>
 <script type="module">
@@ -35,7 +40,7 @@ app.use('/esy-state',  express.static('node_modules/@esyfyi/esy-state', { index:
 </script>
 ```
 
-### TODO: Data binding with "Mustache" syntax
+### TODO: One-way Data binding with "Mustache" syntax
 ```html
 <h1 #world>Hello {{world]]!</h1>
 <script type="module">
@@ -44,7 +49,7 @@ app.use('/esy-state',  express.static('node_modules/@esyfyi/esy-state', { index:
 </script>
 ```
 
-### Data binding (arbitrary HTML)
+### One-way data binding (arbitrary HTML)
 
 ⚠️ Dynamically rendering arbitrary HTML on your website can be very dangerous because it can easily lead to XSS vulnerabilities. Only use this method on trusted content and never on user-provided content.
 
@@ -56,7 +61,7 @@ app.use('/esy-state',  express.static('node_modules/@esyfyi/esy-state', { index:
 </script>
 ```
 
-### TODO: Attribute binding
+### TODO: Attribute binding (Two-way data binding)
 ```html
 <h1 #foo></h1>
 <input type="text" :value="foo" @change="onInputChange" id="input">
@@ -115,12 +120,17 @@ Hello <div #name>Noname</div>!
 
 ## 🚀 Roadmap
 
-- Persits state via Web Storage API
+- Work in progress: Create a build/release pipline for version control.
+- TODO: Persits state via Web Storage API
 - Known issue: Neasted list rendering is not possible yet.
 - Improvment needed on: Mustache template implementation.
 - Improvment needed on: Subscription handling.
 - Figure out: Best way to distribute? CDN? NPM package?
 - Figure out: Automatical testing? E2E?
-- Figure out: Create a build/release pipline for version control.
 - Better documentation.
-- Release the first version.
+
+## 💡 Ideas
+- CSS class manipulation
+- Pain-point: Modals?
+- Decapule and re-use logic, Components?
+- Routing (nice urls /foo/bar)?

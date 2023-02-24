@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esy-State Examples: List rendering (Object)</title>
+  <script type="module" src="../src/index.mjs"></script>
+</head>
+<body>
+  <h3>State persistance</h3>
+  <ul>
+    <li %persistant_people>
+      <div>Index: {{__index}}</div>
+      <div>Name: {{name}}</div>
+      <div>Age: {{age}}</div>
+    </li>
+  </ul>
+
+  <input type="text" id="name" placeholder="Name">
+  <input type="number" id="age" placeholder="Age">
+  <button @click="add">Add</button>
+  <button @click="remove">Remove</button>
+
+  <br><br>
+  <div #__not_persistant_string></div>
+  <input type="text" id="not-persistant-str" placeholder="Foo">
+  <button @click="setString">Set Not Persistant String</button>
+
+  <br><br>
+  <button @click="clear">Clear Persisted Keys</button>
+
+  <script type="module">
+    import { state, mutations, clearPersistedKeys } from '../src/index.mjs'
+
+    state["__not_persistant_string"] = "Not persistant string";
+
+    mutations.add = () => {
+      const name = document.getElementById("name").value;
+      const age = document.getElementById("age").value;
+
+      const people = state["persistant_people"] || [];
+      people.push({ name,  age });  
+      state["persistant_people"] = people;
+    }
+
+    mutations.remove = () => {
+      const people = state["persistant_people"] || [];
+      people.pop();
+      state["persistant_people"] = people;
+    }
+
+    mutations.setString = () => {
+      const str = document.getElementById("not-persistant-str").value;
+      state["__not_persistant_string"] = str;
+    }
+
+    mutations.clear = () => {
+      clearPersistedKeys();
+    }
+  </script>
+</body>
+</html>
