@@ -134,3 +134,4 @@ Hello <div #name>Noname</div>!
 - Pain-point: Modals?
 - Decapule and re-use logic, Components?
 - Routing (nice urls /foo/bar)?
+
