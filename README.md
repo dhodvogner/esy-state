@@ -124,4 +124,3 @@ Hello <div #name>Noname</div>!
 - Figure out: Create a build/release pipline for version control.
 - Better documentation.
 - Release the first version.
-
