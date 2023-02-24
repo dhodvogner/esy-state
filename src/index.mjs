@@ -1,11 +1,15 @@
-import { createState, notify } from "./state.mjs";
+import { createState, loadPersistedKeys, notify } from "./state.mjs";
 import { collectNodes } from "./utils.mjs";
 import { subscriptions, subscribe } from "./subscriptions.mjs";
+
+export { clearPersistedKeys } from "./state.mjs";
 
 export const state = createState(subscriptions);
 export const mutations = {};
 
 window.addEventListener("load", () => {
+  loadPersistedKeys(state);
+
   const nodesWithDataBindings = collectNodes("#");
   nodesWithDataBindings.forEach((node) => {
     const stateKey = node.attribute.name.split("#")[1];
@@ -34,5 +38,4 @@ window.addEventListener("load", () => {
     subscribe(stateKey, { type: "repeater", parentNode, templateNode });
     notify(stateKey, state, subscriptions, "window.load");
   });
-
 });

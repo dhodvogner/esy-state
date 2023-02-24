@@ -25,3 +25,7 @@ export const renderMustache = (template, data) => {
   });
   return result;
 }
+
+export const isNullOrUndefined = (value) => {
+  return value === null || value === undefined;
+}
