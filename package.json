@@ -1,13 +1,14 @@
 {
   "name": "@esyfyi/esy-state",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "Make your DOM react to state changes",
   "main": "src/index.js",
   "type": "module",
   "scripts": {
     "test": "echo \"No tests yet :(\" && exit 0",
     "examples": "npx http-server ./ -p 8080",
-    "pack": "npm pack --pack-destination ./dist"
+    "pack": "npm pack --pack-destination ./dist",
+    "semantic-release": "semantic-release"
   },
   "exports": {
     ".": {
@@ -19,7 +20,17 @@
   "files": [
     "src/**/*",
     "index.mjs"
- ],
+  ],
   "author": "Daniel Hodvogner <dhodvogner@gmail.com>",
-  "license": "GNU GPLv3"
+  "license": "GNU GPLv3",
+  "devDependencies": {
+    "semantic-release": "^20.1.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/esyfyi/esy-state.git"
+  },
+  "release": {
+    "branches": ["main", "next"]
+  }
 }
