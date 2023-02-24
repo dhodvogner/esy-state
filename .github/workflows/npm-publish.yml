@@ -31,10 +31,6 @@ jobs:
           node-version: 18
           registry-url: https://registry.npmjs.org/
       - run: npm ci
-      - name: Configure npm
-        run: |
-          echo '//registry.npmjs.org/:_authToken=${secrets.NPM_TOKEN}' > .npmrc
-          cat .npmrc
       - name: Semantic Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
