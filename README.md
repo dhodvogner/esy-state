@@ -3,7 +3,9 @@ Make your DOM react to changes.
 
 Low-code framework, no aditional dependencies (100% Vanilla JS), no building, no transpilation.
 
-[![Node.js Package CI](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml/badge.svg?branch=main)](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml)
+[![Test](https://github.com/esyfyi/esy-state/actions/workflows/test.yml/badge.svg)](https://github.com/esyfyi/esy-state/actions/workflows/test.yml)
+[![Release](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml/badge.svg?branch=main)](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml)
+[![npm version](https://badge.fury.io/js/@esyfyi%2Fesy-state.svg)](https://badge.fury.io/js/@esyfyi%2Fesy-state)  
 
 ## 👋 Getting Started
 
@@ -76,9 +78,9 @@ TODO: Explain persistence and how to not persisit certain variables (__)
 </script>
 ```
 
-### TODO: Conditional rendering
+### Conditional rendering
 ```html
-<div ?foo>I'm visible!<div>
+<div ?foo>I'm visible!</div>
 <div ?!foo>I'm not visible</div>
 <script type="module">
   import { state } from './esy-state';
@@ -119,20 +121,14 @@ Hello <div #name>Noname</div>!
 ```
 
 ## 🚀 Roadmap
-
-- Work in progress: Create a build/release pipline for version control.
-- TODO: Persits state via Web Storage API
 - Known issue: Neasted list rendering is not possible yet.
 - Improvment needed on: Mustache template implementation.
 - Improvment needed on: Subscription handling.
-- Figure out: Best way to distribute? CDN? NPM package?
-- Figure out: Automatical testing? E2E?
 - Better documentation.
+- Figure out: CDN distribution besides NPM package.
 
-## 💡 Ideas
-- CSS class manipulation
-- Pain-point: Modals?
-- Decapule and re-use logic, Components?
+## 💡 Future Feature Ideas
+- CSS class manipulation (add, remove, toggle)
+- A common pain-point is how to create Modals/Pop-ups?
+- How we could decapule and re-use partial logic? Web Components maybe?
 - Routing (nice urls /foo/bar)?
-
-

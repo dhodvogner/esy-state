@@ -47,13 +47,8 @@ export const createState = (subscriptions, repeaters) => {
 };
 
 // TODO: persist state in local storage
-// 1. on load -> persisted_keyes = localStorage.getItem("persisted_keys")
-// 2. on get -> if (persisted_keys.includes(key)) -> return localStorage.getItem(key)
-// 3. on set -> localStorage.setItem(key, value), persisted_keys.push(key)
-// do not persist any variables that start with __
 // What if we exceed the local storage limit? -> https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API/Using_the_Web_Storage_API#testing_for_availability
 // How to measure the size of a string? -> https://stackoverflow.com/questions/5515869/string-length-in-bytes-in-javascript
-// How to handle arrays and objects? -> JSON.stringify, JSON.parse
 
 export const notify = (stateKey, state, subscriptions, origin) => {
   // TODO: better logging
@@ -89,6 +84,19 @@ export const notify = (stateKey, state, subscriptions, origin) => {
             parentNode.appendChild(newNode);
           }
         });
+      }
+
+      if (subscription.type === "conditional") {
+        const { parentNode, templateNode, compare_type, prev } = subscription;
+        if(parentNode.contains(templateNode))
+          parentNode.removeChild(templateNode);
+        
+        if (state[stateKey] === compare_type) {
+          if(prev)
+            parentNode.insertBefore(templateNode, prev.nextElementSibling);
+          else
+            parentNode.appendChild(templateNode);
+        }
       }
     });
 }
