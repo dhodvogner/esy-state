@@ -78,7 +78,7 @@ TODO: Explain persistence and how to not persisit certain variables (__)
 
 ### TODO: Conditional rendering
 ```html
-<div ?foo>I'm visible!<div>
+<div ?foo>I'm visible!</div>
 <div ?!foo>I'm not visible</div>
 <script type="module">
   import { state } from './esy-state';
@@ -120,8 +120,6 @@ Hello <div #name>Noname</div>!
 
 ## 🚀 Roadmap
 
-- Work in progress: Create a build/release pipline for version control.
-- TODO: Persits state via Web Storage API
 - Known issue: Neasted list rendering is not possible yet.
 - Improvment needed on: Mustache template implementation.
 - Improvment needed on: Subscription handling.
@@ -134,5 +132,3 @@ Hello <div #name>Noname</div>!
 - Pain-point: Modals?
 - Decapule and re-use logic, Components?
 - Routing (nice urls /foo/bar)?
-
-

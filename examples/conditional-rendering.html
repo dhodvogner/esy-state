@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esy-State Example: Conditional Rendering</title>
+</head>
+<body>
+  <h3>Conditional Rendering</h3>
+  
+  <h4>Parent: Body</h4>
+  <div id="foo-true" ?foo>I'm visible when Foo is true!</div>
+  <div id="foo-false" ?!foo>I'm not visible when Foo is true!</div>
+
+  <br><br>
+  <h4>Parent: Element</h4>
+  <div>
+    <div id="with-parent-foo-true" ?foo>I'm visible when Foo is true!</div>
+    <div id="with-parent-foo-false" ?!foo>I'm not visible when Foo is true!</div>
+  </div>
+
+  <br><br>
+  <h4>Order (Parent: Body)</h4>
+  <article>1</article>
+  <article ?foo>2</article>
+  <article>3</article>
+
+  <br><br>
+  <h4>Order (Parent: Element)</h4>
+  <ul>
+    <li>1</li>
+    <li ?foo>2</li>
+    <li>3</li>
+  </ul>
+
+  <br><br>
+  <button id="btn-toggle" @click="toggle">Toggle</button>
+
+  <script type="module" src="../src/index.mjs"></script>
+  <script type="module">
+    import { state, mutations } from '../src/index.mjs'
+
+    state["foo"] = true;
+
+    mutations.toggle = () => {
+      state["foo"] = !state["foo"];
+    }
+  </script>
+</body>
+</html>
