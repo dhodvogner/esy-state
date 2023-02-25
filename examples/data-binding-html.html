@@ -8,10 +8,10 @@
 </head>
 <body>
   <h3>Data binding with HTML</h3>
-  <div +hello-world></div>
+  <div id="html-bind" +hello-world></div>
 
   <input type="text" id="html" placeholder="<b>Foo</b>" value="Hello <b>World</b>!">
-  <button @click="update">Update</button>
+  <button id="btn-update" @click="update">Update</button>
 
   <script type="module" src="../src/index.mjs"></script>
   <script type="module">

@@ -9,12 +9,12 @@
 </head>
 <body>
   <h3>List rendering (Array)</h3>
-  <ul>
+  <ul id="numbers">
     <li %arr></li>
   </ul>
 
-  <button @click="add">Add</button>
-  <button @click="remove">Remove</button>
+  <button id="btn-add" @click="add">Add</button>
+  <button id="btn-remove" @click="remove">Remove</button>
 
   <script type="module">
     import { state, mutations } from '../src/index.mjs'
