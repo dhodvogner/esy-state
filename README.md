@@ -3,7 +3,9 @@ Make your DOM react to changes.
 
 Low-code framework, no aditional dependencies (100% Vanilla JS), no building, no transpilation.
 
-[![Node.js Package CI](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml/badge.svg?branch=main)](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml)
+[![Test](https://github.com/esyfyi/esy-state/actions/workflows/test.yml/badge.svg)](https://github.com/esyfyi/esy-state/actions/workflows/test.yml)
+[![Release](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml/badge.svg?branch=main)](https://github.com/esyfyi/esy-state/actions/workflows/npm-publish.yml)
+[![npm version](https://badge.fury.io/js/@esyfyi%2Fesy-state.svg)](https://badge.fury.io/js/@esyfyi%2Fesy-state)  
 
 ## 👋 Getting Started
 
