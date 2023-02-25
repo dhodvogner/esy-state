@@ -9,7 +9,7 @@
 </head>
 <body>
   <h3>State persistance</h3>
-  <ul>
+  <ul id="persistant-people">
     <li %persistant_people>
       <div>Index: {{__index}}</div>
       <div>Name: {{name}}</div>
@@ -19,16 +19,16 @@
 
   <input type="text" id="name" placeholder="Name">
   <input type="number" id="age" placeholder="Age">
-  <button @click="add">Add</button>
-  <button @click="remove">Remove</button>
+  <button id="btn-add" @click="add">Add</button>
+  <button id="btn-remove" @click="remove">Remove</button>
 
   <br><br>
-  <div #__not_persistant_string></div>
-  <input type="text" id="not-persistant-str" placeholder="Foo">
-  <button @click="setString">Set Not Persistant String</button>
+  <div id="not-persistant-string" #__not_persistant_string></div>
+  <input type="text" id="inp-not-persistant-str" placeholder="Foo">
+  <button id="btn-setString" @click="setString">Set Not Persistant String</button>
 
   <br><br>
-  <button @click="clear">Clear Persisted Keys</button>
+  <button id="btn-clear" @click="clear">Clear Persisted Keys</button>
 
   <script type="module">
     import { state, mutations, clearPersistedKeys } from '../src/index.mjs'
@@ -51,7 +51,7 @@
     }
 
     mutations.setString = () => {
-      const str = document.getElementById("not-persistant-str").value;
+      const str = document.getElementById("inp-not-persistant-str").value;
       state["__not_persistant_string"] = str;
     }
 

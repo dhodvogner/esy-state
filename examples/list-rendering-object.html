@@ -9,7 +9,7 @@
 </head>
 <body>
   <h3>List rendering (Object)</h3>
-  <ul>
+  <ul id="people">
     <li %people>
       <div>Index: {{__index}}</div>
       <div>Name: {{name}}</div>
@@ -20,8 +20,8 @@
 
   <input type="text" id="name" placeholder="Name">
   <input type="number" id="age" placeholder="Age">
-  <button @click="add">Add</button>
-  <button @click="remove">Remove</button>
+  <button id="btn-add" @click="add">Add</button>
+  <button id="btn-remove" @click="remove">Remove</button>
 
   <script type="module">
     import { state, mutations } from '../src/index.mjs'
@@ -29,9 +29,6 @@
     state["people"] = [
       { name: "John", age: 20 },
       { name: "Jane", age: 21 },
-      { name: "Jack", age: 22 },
-      { name: "Jill", age: 23 },
-      { name: "Joe",  age: 24 },
     ];
 
     mutations.add = () => {
