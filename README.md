@@ -76,7 +76,7 @@ TODO: Explain persistence and how to not persisit certain variables (__)
 </script>
 ```
 
-### TODO: Conditional rendering
+### Conditional rendering
 ```html
 <div ?foo>I'm visible!</div>
 <div ?!foo>I'm not visible</div>
@@ -119,16 +119,14 @@ Hello <div #name>Noname</div>!
 ```
 
 ## 🚀 Roadmap
-
 - Known issue: Neasted list rendering is not possible yet.
 - Improvment needed on: Mustache template implementation.
 - Improvment needed on: Subscription handling.
-- Figure out: Best way to distribute? CDN? NPM package?
-- Figure out: Automatical testing? E2E?
 - Better documentation.
+- Figure out: CDN distribution besides NPM package.
 
-## 💡 Ideas
-- CSS class manipulation
-- Pain-point: Modals?
-- Decapule and re-use logic, Components?
+## 💡 Future Feature Ideas
+- CSS class manipulation (add, remove, toggle)
+- A common pain-point is how to create Modals/Pop-ups?
+- How we could decapule and re-use partial logic? Web Components maybe?
 - Routing (nice urls /foo/bar)?
