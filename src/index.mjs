@@ -15,7 +15,7 @@ window.addEventListener("load", () => {
   const nodesWithDataBindings = collectNodes("#");
   nodesWithDataBindings.forEach((node) => {
     const stateKey = node.attribute.name.split("#")[1];
-    subscribe(stateKey, { type: "content", element: node.element });
+    subscribe(stateKey, { type: "content", element: node.element, templateNode: node.element.cloneNode(true) });
     if(!stateKeys.includes(stateKey)) stateKeys.push(stateKey);
   });
 

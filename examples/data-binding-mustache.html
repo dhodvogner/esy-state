@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esy-State Example: One-way Data binding with "Mustache" syntax</title>
+</head>
+<body>
+  <h3>One-way Data binding with "Mustache" syntax</h3>
+  <div id="direct-bind" #name>Hello my friend, {{name}} !!!</div>
+  <div id="neasted-bind">Hello <span #name>to you {{name}} !!!</span>, have a nice day.</div>
+
+  <input type="text" id="name" placeholder="Name">
+  <button id="btn-sayHello" @click="sayHello">Say Hello</button>
+
+  <script type="module" src="../src/index.mjs"></script>
+  <script type="module">
+    import { state, mutations } from '../src/index.mjs'
+
+    state["name"] = 'World';
+
+    mutations.sayHello = () => {
+      const name = document.getElementById("name").value;
+      state["name"] = `${name}`;
+    }
+  </script>
+</body>
+</html>

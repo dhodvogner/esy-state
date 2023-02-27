@@ -24,7 +24,7 @@ const savePersistedKeys = () => {
 };
 
 const setPersistedKey = (key, value) => {
-  if(key.startsWith("__")) return;
+  if (key.startsWith("__")) return;
   localStorage.setItem(LOCALSOTRAGE_PREFIX + key, JSON.stringify(value));
 
   if (persistedKeyes.includes(key)) return;
@@ -56,11 +56,13 @@ export const notify = (stateKey, state, subscriptions, origin) => {
   console.log(`📢 ${origin} ==> notify`, stateKey, state[stateKey]);
 
   // debounce state changes to avoid multiple re-renders?
-
   if (subscriptions[stateKey])
     subscriptions[stateKey].forEach((subscription) => {
       if (subscription.type === "content") {
-        subscription.element.innerText = state[stateKey];
+        if(subscription.templateNode.innerText === "")
+          subscription.element.innerText = state[stateKey];
+        else
+          subscription.element.innerText = renderMustache(subscription.templateNode.innerText, state);
       }
 
       if (subscription.type === "content-html") {
@@ -71,7 +73,7 @@ export const notify = (stateKey, state, subscriptions, origin) => {
         const { parentNode, templateNode } = subscription;
         parentNode.innerHTML = "";
 
-        if(isNullOrUndefined(state[stateKey])) return;
+        if (isNullOrUndefined(state[stateKey])) return;
 
         state[stateKey].forEach((item, index) => {
           const newNode = templateNode.cloneNode(true);
@@ -88,11 +90,11 @@ export const notify = (stateKey, state, subscriptions, origin) => {
 
       if (subscription.type === "conditional") {
         const { parentNode, templateNode, compare_type, prev } = subscription;
-        if(parentNode.contains(templateNode))
+        if (parentNode.contains(templateNode))
           parentNode.removeChild(templateNode);
-        
+
         if (state[stateKey] === compare_type) {
-          if(prev)
+          if (prev)
             parentNode.insertBefore(templateNode, prev.nextElementSibling);
           else
             parentNode.appendChild(templateNode);
