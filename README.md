@@ -15,7 +15,8 @@ $ npm i @esyfyi/esy-state
 
 ```javascript
 // Serv the module files staticly (With express for example) 
-app.use('/esy-state',  express.static('node_modules/@esyfyi/esy-state', { index: ["index.mjs"] }));
+app.use('/esy-state',  
+  express.static('node_modules/@esyfyi/esy-state', { index: ["index.mjs"] }));
 ```
 
 ```html
@@ -28,8 +29,10 @@ app.use('/esy-state',  express.static('node_modules/@esyfyi/esy-state', { index:
 
 ## 🤨 How it works?
 
-TODO: Explain how state and mutations are working
-TODO: Explain persistence and how to not persisit certain variables (__)
+Esy-state is a lightweight Javascript framework that makes building reactive websites easier than ever before. With esy-state, users can bind HTML elements to a reactive store, meaning that any changes to the store will be reflected directly in the HTML DOM. This makes it possible to create dynamic and responsive websites with just a few lines of Javascript code.
+
+## 📚 Documentation
+- [Documentation](https://esy-state.com/documentation.html)
 
 ## 🧩 Features
 
@@ -42,9 +45,9 @@ TODO: Explain persistence and how to not persisit certain variables (__)
 </script>
 ```
 
-### TODO: One-way Data binding with "Mustache" syntax
+### One-way Data binding with "Mustache" syntax
 ```html
-<h1 #world>Hello {{world]]!</h1>
+<h1 #world>Hello {{world}}!</h1>
 <script type="module">
   import { state } from './esy-state';
   state["world"] = 'World';
@@ -60,21 +63,6 @@ TODO: Explain persistence and how to not persisit certain variables (__)
 <script type="module">
   import { state } from './esy-state';
   state["hello-world"] = '<h1>Hello World!</h1>';
-</script>
-```
-
-### TODO: Attribute binding (Two-way data binding)
-```html
-<h1 #foo></h1>
-<input type="text" :value="foo" @change="onInputChange" id="input">
-<script type="module">
-  import { state, mutations } from './esy-state';
-  state["foo"] = 'bar!';
-  mutations.onInputChange = () => {
-    const name = document.getElementById("input").value;
-    state["foo"] = bar;
-    console.log(state);
-  };
 </script>
 ```
 
@@ -120,6 +108,11 @@ Hello <div #name>Noname</div>!
 </script>
 ```
 
+### TODO: Importing partials
+```html
+<import-html src="./header.html"></import-html>
+```
+
 ## 🚀 Roadmap
 - Known issue: Neasted list rendering is not possible yet.
 - Improvment needed on: Mustache template implementation.
@@ -132,3 +125,13 @@ Hello <div #name>Noname</div>!
 - A common pain-point is how to create Modals/Pop-ups?
 - How we could decapule and re-use partial logic? Web Components maybe?
 - Routing (nice urls /foo/bar)?
+
+## 📝 Contributing
+
+TODO: Create guidlines for contributing.
+
+## 💬 Running the examples
+
+```shell
+$ npm run examples
+```

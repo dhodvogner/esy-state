@@ -2,6 +2,7 @@
   "name": "@esyfyi/esy-state",
   "version": "0.0.0-development",
   "description": "Make your DOM react to state changes",
+  "keywords": ["low-code", "frontend", "framework", "state", "dom", "reactive", "vanillajs", "prototyping" ],
   "main": "src/index.js",
   "type": "module",
   "scripts": {
