@@ -7,11 +7,7 @@ export { clearPersistedKeys } from "./state.mjs";
 export const state = createState(subscriptions);
 export const mutations = {};
 
-window.addEventListener("load", () => {
-  loadPersistedKeys(state);
-
-  const stateKeys = [];
-
+const CollectNodesWithBindings =(stateKeys) => {
   const nodesWithDataBindings = collectNodes("#");
   nodesWithDataBindings.forEach((node) => {
     const stateKey = node.attribute.name.split("#")[1];
@@ -56,8 +52,39 @@ window.addEventListener("load", () => {
     subscribe(stateKey, { type: "conditional", parentNode, templateNode, compare_type, prev });
     if(!stateKeys.includes(stateKey)) stateKeys.push(stateKey);
   });
+};
+
+const setup = () => {
+  const stateKeys = [];
+
+  CollectNodesWithBindings(stateKeys);
 
   stateKeys.forEach((stateKey) => {
     notify(stateKey, state, subscriptions, "window.load");
   });
+};
+
+window.addEventListener("load", () => {
+  loadPersistedKeys(state);
+  const htmlImports = document.querySelectorAll("html-import");
+  if (htmlImports.length == 0) {
+    setup();
+  } else {
+    document["html_loaded"] = 0;
+    htmlImports.forEach((htmlImport) => {
+      const url = htmlImport.getAttribute("src");
+      fetch(url)
+        .then((response) => response.text())
+        .then((html) => {
+          htmlImport.insertAdjacentHTML("afterend", html);
+          htmlImport.remove();
+          document["html_loaded"] += 1;
+          if (document["html_loaded"] === htmlImports.length)
+          { 
+            delete document["html_loaded"];
+            setup();
+          }      
+        });
+    });
+  }
 });
