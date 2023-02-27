@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Esy-State Example: Importing partials</title>
+</head>
+<body>
+  <h3>Importing partials</h3>
+  
+  <html-import src="partials/import-test.html"></html-import>
+
+  <div id="neasted">
+    <html-import src="partials/import-test.html"></html-import>
+  </div>
+
+  <script type="module" src="../src/index.mjs"></script>
+  <script type="module">
+    import { state } from '../src/index.mjs'
+
+    state["hello-world"] = 'Hello World!';
+  </script>
+</body>
+</html>

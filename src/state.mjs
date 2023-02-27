@@ -59,7 +59,7 @@ export const notify = (stateKey, state, subscriptions, origin) => {
   if (subscriptions[stateKey])
     subscriptions[stateKey].forEach((subscription) => {
       if (subscription.type === "content") {
-        if(subscription.templateNode.innerText === "")
+        if(subscription.templateNode.innerText === "" || !subscription.templateNode.innerText.includes("{{"))
           subscription.element.innerText = state[stateKey];
         else
           subscription.element.innerText = renderMustache(subscription.templateNode.innerText, state);

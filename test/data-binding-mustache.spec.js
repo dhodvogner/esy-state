@@ -2,10 +2,10 @@ import { expect } from 'chai';
 
 import { common_before, common_beforeEach, common_after, common_afterEach, gotoExampleFile } from '../utils/test-utils.mjs';
 
-const INCOGNITO_MODE = true;
+const INCOGNITO_MODE = false;
 const EXAMPLE_FILE_NAME = 'data-binding-mustache';
 
-describe('E2E: Data Binding Simple', () => {
+describe('E2E: Data Binding Mustache', () => {
   let browser, context, page;
 
   before(async () => {
