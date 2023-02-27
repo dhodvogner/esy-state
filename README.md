@@ -108,23 +108,22 @@ Hello <div #name>Noname</div>!
 </script>
 ```
 
-### TODO: Importing partials
+### Importing partials
 ```html
 <import-html src="./header.html"></import-html>
 ```
 
 ## 🚀 Roadmap
-- Known issue: Neasted list rendering is not possible yet.
-- Improvment needed on: Mustache template implementation.
+- Clean up code
 - Improvment needed on: Subscription handling.
-- Better documentation.
 - Figure out: CDN distribution besides NPM package.
+- Known issue: Neasted list rendering is not possible yet.
 
 ## 💡 Future Feature Ideas
 - CSS class manipulation (add, remove, toggle)
 - A common pain-point is how to create Modals/Pop-ups?
-- How we could decapule and re-use partial logic? Web Components maybe?
-- Routing (nice urls /foo/bar)?
+- Routing guide for nice urls via Express? (/foo/bar)
+- Boilerplate project?
 
 ## 📝 Contributing
 
